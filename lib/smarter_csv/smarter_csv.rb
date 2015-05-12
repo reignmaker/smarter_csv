@@ -143,7 +143,7 @@ module SmarterCSV
           if chunk.size >= chunk_size || f.eof?   # if chunk if full, or EOF reached
             # do something with the chunk
             if block_given?
-              yield chunk  # do something with the hashes in the chunk in the block
+              yield chunk, f.eof?  # do something with the hashes in the chunk in the block
             else
               result << chunk  # not sure yet, why anybody would want to do this without a block
             end
